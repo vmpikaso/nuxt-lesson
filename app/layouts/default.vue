@@ -1,6 +1,9 @@
 <script setup>
 import { useUserStore } from '~/stores/user';
 
+const mounted = ref(false);
+onMounted(() => { mounted.value = true; });
+
 const {isConnected,user} = storeToRefs(useUserStore());
 const {logout} = useUserStore();
 
@@ -11,8 +14,8 @@ function handleLogout() {
 
 </script>
 <template>
-    <main class="">
-        <header class="flex justify-between bg-blue-500 text-white p-2">
+    <main>
+        <header  v-if="mounted" class="flex justify-between bg-blue-500 text-white p-2">
             <h1 class="text-5xl">CRM</h1>
             <ul v-if="isConnected" class="flex gap-2 p-4">
                 <li><NuxtLink to="/">Accueil</NuxtLink></li>
