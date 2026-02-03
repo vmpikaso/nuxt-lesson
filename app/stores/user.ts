@@ -1,5 +1,6 @@
 export const useUserStore = defineStore("user", () => {
-  const crm = useCRM("v019c2326dd69");
+  const namespace = useRuntimeConfig().public?.apiNamespace  || '';
+  const crm = useCRM(namespace);
   const user = ref<{ username: string; email: string } | null>(null);
   const token = ref<string | null>(null);
 

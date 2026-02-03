@@ -13,10 +13,6 @@ const handleDelete = async (taskId: number) => {
     navigateTo('/tasks');
 };
 
-onMounted(() => {
-    console.log('TaskDetail mounted');
-});
-
 </script>
 <template>
     <div v-if="task" class="p-2">

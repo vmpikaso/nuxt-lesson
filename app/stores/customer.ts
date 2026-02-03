@@ -9,7 +9,8 @@ export interface ICustomer extends ICreateCustomer {
   id: number;
 }
 export const useCustomerStore = defineStore("customer", () => {
-  const crm = useCRM("v019c2326dd69");
+  const namespace = useRuntimeConfig().public?.apiNamespace  || '';
+  const crm = useCRM(namespace);
   const customers = ref<ICustomer[]>([]);
 
   async function fetchCustomers() {
@@ -39,5 +40,14 @@ export const useCustomerStore = defineStore("customer", () => {
     }
   }
 
-  return { customers, fetchCustomers, addCustomer, deleteCustomer };
+  async function getCustomerById(id: number) {
+    try {
+      return await crm.clients.get(id);
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+
+  return { customers, fetchCustomers, addCustomer, deleteCustomer, getCustomerById };
 });

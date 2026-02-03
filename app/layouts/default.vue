@@ -9,10 +9,6 @@ function handleLogout() {
     navigateTo('/login');
 }
 
-onMounted(() => {
-   console.log('Layout mounted. User connected:', isConnected, 'User info:', user.value); 
-});
-
 </script>
 <template>
     <main class="">
@@ -24,7 +20,7 @@ onMounted(() => {
                 <li><NuxtLink to="/tasks">Tâches</NuxtLink></li>
             </ul>
             <div class="p-2">
-                <button v-if="isConnected" @click="handleLogout">{{ user }}</button>
+                <button v-if="isConnected" @click="handleLogout">{{ user.email }}</button>
             </div>
         </header>
         <div class="p-4 flex justify-center gap-y-8 items-center flex-col">

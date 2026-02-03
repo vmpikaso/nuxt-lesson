@@ -11,7 +11,8 @@ export interface ITask {
 }
 
 export const useTaskStore = defineStore("task", () => {
-  const crm = useCRM("v019c2326dd69");
+  const namespace = useRuntimeConfig().public?.apiNamespace  || '';
+  const crm = useCRM(namespace);
   const tasks = ref<ITask[]>([]);
 
   const loading = ref(false);

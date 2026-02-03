@@ -1,2 +1,7 @@
-export const baseUrl =
-  "https://nuxt.formation.logitud-interne.fr/api/crm/v019c2326dd69/";
+import { useRuntimeConfig } from '#app'
+
+export function getBaseUrl() {
+  const { public: { apiBaseUrl = '', apiNamespace = '' } = {} } = useRuntimeConfig();
+  return `${apiBaseUrl}api/crm/${apiNamespace}/`;
+}
+

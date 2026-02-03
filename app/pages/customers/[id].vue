@@ -3,11 +3,10 @@ const route = useRoute();
 const router = useRouter();
 let customer = ref<ICustomer | null>(null);
 
-const crm = useCRM("v019c2326dd69");
-const { deleteCustomer } = useCustomerStore();
+const { deleteCustomer, getCustomerById } = useCustomerStore();
 
 onMounted(async () => {
-    customer.value = await crm.clients.get(Number(route.params.id));
+    customer.value = await getCustomerById(Number(route.params.id));
 });
 
 async function handleDelete() {
