@@ -8,7 +8,7 @@
 
 
 <template>
-<h1 class="text-4xl">Listes des tâches</h1>
+    <UHeading level="1">Listes des tâches</UHeading>
 
     <TaskList />
 

@@ -15,22 +15,18 @@ const handleDelete = async (taskId: number) => {
 
 </script>
 <template>
-    <div v-if="task" class="p-2">
-        <h1 class="text-2xl">Tâche - {{ task.title }} (N° {{ id }})</h1>
+    <UCard v-if="task">
+        <UHeading level="1">Tâche - {{ task.title }} (N° {{ id }})</UHeading>
 
-        <div class="mt-4">
-            <div><strong>Description:</strong></div>
-            <div class="border p-2 rounded mt-1">{{ task.description || '—' }}</div>
-        </div>
 
-        <div class="mt-2"><strong>Statut:</strong> {{ task.status || '—' }}</div>
+            <UText><strong>Description:</strong></UText>
+            <UCard >{{ task.description || '—' }}</UCard>
 
-        <div class="mt-2"><strong>Client (id):</strong> {{ task.client_id ?? '—' }}</div>
+            <UText><strong>Statut:</strong> {{ task.status || '—' }}</UText>
+            <UText><strong>Client (id):</strong> {{ task.client_id ?? '—' }}</UText>
+            <UText><strong>Date d'échéance:</strong> {{ task.due_date || '—' }}</UText>
 
-        <div class="mt-2"><strong>Date d'échéance:</strong> {{ task.due_date || '—' }}</div>
+            <UButton  @click="handleDelete(id)">Supprimer la tâche</UButton>
 
-        <div class="mt-4">
-            <button class="bg-red-500 p-2 text-white rounded" @click="handleDelete(id)">Supprimer la tâche</button>
-        </div>
-    </div>
+    </UCard>
 </template>

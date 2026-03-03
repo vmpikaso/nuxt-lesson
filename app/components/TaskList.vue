@@ -12,9 +12,14 @@ onMounted(async () => {
 </script>
 <template>
 <section>
-    <ul v-if="tasks?.length">
-        <li class="border-solid border-2 border-indigo-600 p-4 m-2 cursor-pointer" v-for="task in tasks" :key="task.id" @click="navigateTo(`/tasks/${task.id}`)">{{ task.title }}</li>
-    </ul>
-    <button class="bg-green-500 p-2 text-white rounded" @click.prevent="router.push('/tasks/create')">Ajouter une tâche</button>
+    <div v-if="tasks?.length">
+
+            <UCard v-for="task in tasks" :key="task.id" clickable @click="navigateTo(`/tasks/${task.id}`)">
+                {{ task.title }}
+            </UCard>
+
+    </div>
+
+    <UButton color="primary" @click.prevent="router.push('/tasks/create')">Ajouter une tâche</UButton>
 </section>
 </template>

@@ -22,7 +22,7 @@ async function handleDelete() {
     <div>
         <div><span>{{ customer?.name }}</span></div>
         <div class="mt-4">
-            <button class="bg-red-500 p-2 text-white rounded" @click="handleDelete">Supprimer le client</button>
+            <UButton class="bg-red-500 p-2 text-white rounded" @click="handleDelete">Supprimer le client</UButton>
         </div>
     </div>
 </template>
